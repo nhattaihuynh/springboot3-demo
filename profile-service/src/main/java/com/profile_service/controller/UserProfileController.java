@@ -2,6 +2,8 @@ package com.profile_service.controller;
 
 import java.util.List;
 
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,14 +11,17 @@ import com.profile_service.dto.request.ProfileCreateRequest;
 import com.profile_service.dto.response.ProfileCreateResponse;
 import com.profile_service.service.UserProfileService;
 
-import lombok.RequiredArgsConstructor;
 
+@RequestMapping("/api/v1")
 @RestController
-@RequestMapping("/api/v1/profiles")
-@RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class UserProfileController {
 
     private final UserProfileService userProfileService;
+
+    public UserProfileController(UserProfileService userProfileService) {
+        this.userProfileService = userProfileService;
+    }
 
     @PostMapping
     public ResponseEntity<ProfileCreateResponse> createProfile(@RequestBody ProfileCreateRequest request) {
@@ -43,16 +48,6 @@ public class UserProfileController {
     public ResponseEntity<List<ProfileCreateResponse>> getAllProfiles() {
         List<ProfileCreateResponse> responses = userProfileService.getAllUserProfiles();
         return ResponseEntity.ok(responses);
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<ProfileCreateResponse> updateProfile(
-            @PathVariable String id,
-            @RequestBody ProfileCreateRequest request) {
-        ProfileCreateResponse response = userProfileService.updateUserProfile(id, request);
-        return response != null 
-            ? ResponseEntity.ok(response)
-            : ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/{id}")

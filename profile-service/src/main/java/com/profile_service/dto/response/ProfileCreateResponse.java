@@ -11,7 +11,6 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class ProfileCreateResponse {
     private String id;
-    private String userId;
     private String firstName;
     private String lastName;
     private LocalDate dob;

@@ -1,16 +1,13 @@
 spring:
   application:
     name: profile-service
-
-server:
-  port: 8081
-  servlet:
-    context-path: /profile
-
-# Neo4j Configuration
-spring:
   neo4j:
     authentication:
       username: neo4j
       password: 12345678
     uri: bolt://localhost:7687
+
+server:
+  port: 8081
+  servlet:
+    context-path: /profile

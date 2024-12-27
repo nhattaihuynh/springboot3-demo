@@ -10,7 +10,6 @@ import lombok.AllArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProfileCreateRequest {
-    private String userId;
     private String firstName;
     private String lastName;
     private LocalDate dob;

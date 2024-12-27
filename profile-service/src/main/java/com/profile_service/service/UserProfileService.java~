@@ -12,15 +12,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class UserProfileService {
 
     private final UserProfileRepository userProfileRepository;
     private final UserProfileMapper userProfileMapper;
-
-    public UserProfileService(UserProfileRepository userProfileRepository, UserProfileMapper userProfileMapper) {
-        this.userProfileRepository = userProfileRepository;
-        this.userProfileMapper = userProfileMapper;
-    }
 
     public ProfileCreateResponse createUserProfile(ProfileCreateRequest userRequest) {
         UserProfile userProfile = userProfileMapper.toEntity(userRequest);
