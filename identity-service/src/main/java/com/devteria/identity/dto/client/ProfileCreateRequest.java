@@ -1,12 +1,14 @@
-package com.profile_service.dto.request;
+package com.devteria.identity.dto.client;
 
 import java.time.LocalDate;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
 
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProfileCreateRequest {
